@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom'
-import { Container } from 'semantic-ui-react'
+import { Container, Statistic, Icon, Segment, Dimmer, Loader, Grid } from 'semantic-ui-react'
 import { useAuth } from '../context/AuthContext'
 import AdminTab from './AdminTab'
 import { orderApi } from '../misc/OrderApi'
@@ -18,11 +18,15 @@ function AdminPage() {
   const [isAdmin, setIsAdmin] = useState(true)
   const [isUsersLoading, setIsUsersLoading] = useState(false)
   const [isOrdersLoading, setIsOrdersLoading] = useState(false)
+  const [numberOfUsers, setNumberOfUsers] = useState(0)
+  const [numberOfOrders, setNumberOfOrders] = useState(0)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     setIsAdmin(user.data.rol[0] === 'ADMIN')
     handleGetUsers()
     handleGetOrders()
+    fetchData()
   }, [])
 
   const handleInputChange = (e, { name, value }) => {
@@ -117,12 +121,59 @@ function AdminPage() {
     }
   }
 
+  const fetchData = async () => {
+    try {
+      const responseUsers = await orderApi.numberOfUsers()
+      const numberOfUsers = responseUsers.data
+
+      const responseOrders = await orderApi.numberOfOrders()
+      const numberOfOrders = responseOrders.data
+
+      setNumberOfUsers(numberOfUsers)
+      setNumberOfOrders(numberOfOrders)
+    } catch (error) {
+      handleLogError(error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  if (isLoading) {
+    return (
+      <Segment basic style={{ marginTop: window.innerHeight / 2 }}>
+        <Dimmer active inverted>
+          <Loader inverted size='huge'>Loading</Loader>
+        </Dimmer>
+      </Segment>
+    )
+  }
+
   if (!isAdmin) {
     return <Navigate to='/' />
   }
 
   return (
     <Container>
+      <Grid stackable columns={2}>
+        <Grid.Row>
+          <Grid.Column textAlign='center'>
+            <Segment color='teal'>
+              <Statistic>
+                <Statistic.Value><Icon name='user' color='grey' />{numberOfUsers}</Statistic.Value>
+                <Statistic.Label>Users</Statistic.Label>
+              </Statistic>
+            </Segment>
+          </Grid.Column>
+          <Grid.Column textAlign='center'>
+            <Segment color='teal'>
+              <Statistic>
+                <Statistic.Value><Icon name='laptop' color='grey' />{numberOfOrders}</Statistic.Value>
+                <Statistic.Label>Orders</Statistic.Label>
+              </Statistic>
+            </Segment>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
       <AdminTab
         isUsersLoading={isUsersLoading}
         users={users}

@@ -75,11 +75,11 @@ function Login() {
               value={password}
               onChange={handleInputChange}
             />
-            <Button color='violet' fluid size='large'>Login</Button>
+            <Button color='teal' fluid size='large'>Login</Button>
           </Segment>
         </Form>
         <Message>{`Don't have already an account? `}
-          <NavLink to="/signup" color='violet' as={NavLink}>Sign Up</NavLink>
+          <NavLink to="/signup" color='teal' as={NavLink}>Sign Up</NavLink>
         </Message>
         {isError && <Message negative>The username or password provided are incorrect!</Message>}
       </Grid.Column>
