@@ -117,3 +117,4 @@ class UserServiceImplTest {
         verify(userRepository, times(1)).delete(user);
     }
 }
+//added tests for services
