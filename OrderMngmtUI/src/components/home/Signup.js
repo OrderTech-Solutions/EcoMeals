@@ -116,11 +116,11 @@ function Signup() {
               value={email}
               onChange={handleInputChange}
             />
-            <Button color='violet' fluid size='large'>Signup</Button>
+            <Button color='teal' fluid size='large'>Signup</Button>
           </Segment>
         </Form>
         <Message>{`Already have an account? `}
-          <NavLink to="/login" color='violet' as={NavLink}>Login</NavLink>
+          <NavLink to="/login" color='teal' as={NavLink}>Login</NavLink>
         </Message>
         {isError && <Message negative>{errorMessage}</Message>}
       </Grid.Column>
