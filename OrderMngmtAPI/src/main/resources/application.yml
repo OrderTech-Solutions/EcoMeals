@@ -5,9 +5,9 @@ spring:
     hibernate:
       ddl-auto: create
   datasource:
-    url: jdbc:postgresql://localhost:5432/orderdb
+    url: jdbc:postgresql://localhost:5432/ecomealdb
     username: postgres
-    password: postgres
+    password: ZMSjrm49
 
 app:
   jwt:
