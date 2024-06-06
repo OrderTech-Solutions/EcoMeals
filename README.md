@@ -7,7 +7,7 @@ Click here for deployment information, deployment graph and class graph. https:/
 <img width="861" alt="image" src="https://github.com/OrderTech-Solutions/EcoMeals/assets/66969830/c6d42558-f242-4529-84e6-8537f9038eb5">
 
 # Diagrama de clase
-<img width="777" alt="image" src="https://github.com/OrderTech-Solutions/EcoMeals/assets/66969830/1124e4d0-c161-4ff8-89bb-2bf0178f4d3e">
+<img width="860" alt="image" src="https://github.com/OrderTech-Solutions/EcoMeals/assets/66969830/57e0d61e-7766-4a0b-b899-1d338b387682">
 
 # Tareas y responsabilidades
 <img width="877" alt="image" src="https://github.com/OrderTech-Solutions/EcoMeals/assets/66969830/b1b82fee-c338-4327-a090-9a81e94eabf3">
